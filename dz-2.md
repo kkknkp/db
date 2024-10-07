@@ -1,4 +1,5 @@
 Открыть в докере 2 сеанса, запустить везде psql из-под пользователя postgres.
+
 docker run --name some-postgres -e POSTGRES_PASSWORD=postgres -d postgres
 Терминал 1: docker exec -it some-postgres psql -U postgres
 Терминал 2: docker exec -it some-postgres psql -U postgres
