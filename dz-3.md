@@ -44,3 +44,33 @@ postgres-# WHERE relname = 'my_table';
 (1 row)
 
 
+
+ ALTER TABLE my_table SET (autovacuum_enabled = false);
+ALTER TABLE
+
+
+SELECT pg_size_pretty(pg_total_relation_size('my_table'));
+ pg_size_pretty
+----------------
+ 1008 MB
+(1 row)
+
+
+
+DO $$
+BEGIN
+    FOR i IN 1..10 LOOP
+        UPDATE my_table SET text_field = text_field || 'D';
+        RAISE NOTICE 'Step %', i;
+    END LOOP;
+END $$;
+
+
+SELECT pg_size_pretty(pg_total_relation_size('my_table'));
+ pg_size_pretty
+----------------
+ 1392 MB
+(1 row)
+
+
+
