@@ -1,1 +1,46 @@
 
+CREATE TABLE my_table (
+    id SERIAL PRIMARY KEY,
+    text_field TEXT
+);
+
+
+INSERT INTO my_table (text_field)
+SELECT md5(random()::text)
+FROM generate_series(1, 1000000);
+
+
+ SELECT pg_size_pretty(pg_total_relation_size('my_table'));
+ pg_size_pretty
+----------------
+ 87 MB
+(1 row)
+
+
+ DO $$
+BEGIN
+    FOR i IN 1..5 LOOP
+        UPDATE my_table SET text_field = text_field || 'A';
+    END LOOP;
+END $$;
+
+
+
+ SELECT n_dead_tup, last_vacuum, last_autovacuum
+postgres-# FROM pg_stat_all_tables
+postgres-# WHERE relname = 'my_table';
+ n_dead_tup | last_vacuum |        last_autovacuum
+------------+-------------+-------------------------------
+    5000000 |             | 2024-10-11 18:39:23.218691+00
+(1 row)
+
+
+
+
+ SELECT pg_size_pretty(pg_total_relation_size('my_table'));
+ pg_size_pretty
+----------------
+ 524 MB
+(1 row)
+
+
