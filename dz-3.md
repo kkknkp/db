@@ -43,6 +43,21 @@ postgres-# WHERE relname = 'my_table';
 (1 row)
 ```
 
+Ожидание и проверка авто-вакуума
+```sql
+SELECT n_dead_tup FROM pg_stat_all_tables WHERE relname = 'my_table';
+```
+Обновление всех строк 5 раз
+
+```sql
+DO $$
+BEGIN
+    FOR i IN 1..5 LOOP
+        UPDATE my_table SET text_field = text_field || 'B';
+    END LOOP;
+END $$;
+```
+Просмотр нового размера файла с таблицей
 
 ```sql
  SELECT pg_size_pretty(pg_total_relation_size('my_table'));
@@ -51,12 +66,13 @@ postgres-# WHERE relname = 'my_table';
  524 MB
 (1 row)
 ```
-
+Отключение авто-вакуума для таблицы
 ```sql
  ALTER TABLE my_table SET (autovacuum_enabled = false);
 ALTER TABLE
+```
 
-
+```sql
 SELECT pg_size_pretty(pg_total_relation_size('my_table'));
  pg_size_pretty
 ----------------
@@ -64,7 +80,7 @@ SELECT pg_size_pretty(pg_total_relation_size('my_table'));
 (1 row)
 ```
 
-
+Обновление всех строк 10 раз
 ```sql
 DO $$
 BEGIN
@@ -74,7 +90,7 @@ BEGIN
     END LOOP;
 END $$;
 ```
-
+Просмотр размера файла с таблицей снова
 
 ```sql
 SELECT pg_size_pretty(pg_total_relation_size('my_table'));
