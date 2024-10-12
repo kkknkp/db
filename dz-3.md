@@ -31,6 +31,7 @@ BEGIN
     END LOOP;
 END $$;
 ```
+Просмотр количества мертвых строк
 
 ```sql
  SELECT n_dead_tup, last_vacuum, last_autovacuum
