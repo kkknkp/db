@@ -1,3 +1,5 @@
+Создание таблицы и заполнение ее данными 
+
 ```sql
 CREATE TABLE my_table (
     id SERIAL PRIMARY KEY,
@@ -10,6 +12,7 @@ INSERT INTO my_table (text_field)
 SELECT md5(random()::text)
 FROM generate_series(1, 1000000);
 ```
+Просмотр размера файла с таблицей
 
 ```sql
  SELECT pg_size_pretty(pg_total_relation_size('my_table'));
@@ -18,6 +21,7 @@ FROM generate_series(1, 1000000);
  87 MB
 (1 row)
 ```
+Обновление всех строк 5 раз
 
 ```sql
  DO $$
@@ -27,7 +31,6 @@ BEGIN
     END LOOP;
 END $$;
 ```
-
 
 ```sql
  SELECT n_dead_tup, last_vacuum, last_autovacuum
