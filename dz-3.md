@@ -122,3 +122,38 @@ END $$;
 ```
 На этапе 9 размер файла может увеличиваться, несмотря на обновление строк. При обновлении строк в PostgreSQL создаются новые версии строк, а старые версии остаются в таблице и становятся мертвыми. Поскольку авто-вакуум был отключен, эти мертвые строки не удаляются, что увеличивает общий размер файла. После выполнения авто-вакуума мертвые строки были бы убраны, и размер файла уменьшился.
 
+
+```sql
+postgres=# ALTER TABLE my_table SET (autovacuum_enabled = true);
+ALTER TABLE
+postgres=# SELECT pg_size_pretty(pg_total_relation_size('my_table'));
+ pg_size_pretty
+----------------
+ 1662 MB
+(1 row)
+
+postgres=# DO $$
+BEGIN
+    FOR i IN 1..10 LOOP
+        UPDATE my_table SET text_field = text_field || 'D';
+        RAISE NOTICE 'Step %', i;
+    END LOOP;
+END $$;
+NOTICE:  Step 1
+NOTICE:  Step 2
+NOTICE:  Step 3
+NOTICE:  Step 4
+NOTICE:  Step 5
+NOTICE:  Step 6
+NOTICE:  Step 7
+NOTICE:  Step 8
+NOTICE:  Step 9
+NOTICE:  Step 10
+DO
+postgres=# SELECT pg_size_pretty(pg_total_relation_size('my_table'));
+ pg_size_pretty
+----------------
+ 1662 MB
+(1 row)
+
+```
