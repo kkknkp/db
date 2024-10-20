@@ -23,6 +23,8 @@ https://github.com/kkknkp/db/blob/main/2024-10-20_18-50-49.png
 https://github.com/kkknkp/db/blob/main/2024-10-20_19-00-17.png
 
 Результаты теста:
+tcp:318.842905
+tcp:231.717289
 
 
 
