@@ -63,3 +63,5 @@ initial connection time = 36.209 ms
 tps = 803.850282 (without initial connection time)
 
 ```
+
+Асинхронная реплика производительнее 
