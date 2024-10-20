@@ -44,3 +44,22 @@ done in 4.58 s (drop tables 0.02 s, create tables 0.06 s, client-side generate 3
 .39 s, vacuum 0.30 s, primary keys 0.81 s).
 
 ```
+
+```sql
+$ winpty docker exec -it pg_test bash -c "PGUSER=postgres pgbench -c 10 -j 2 -T 60 postgres"
+pgbench (16.4 (Debian 16.4-1.pgdg120+2))
+starting vacuum...end.
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 10
+query mode: simple
+number of clients: 10
+number of threads: 2
+maximum number of tries: 1
+duration: 60 s
+number of transactions actually processed: 48232
+number of failed transactions: 0 (0.000%)
+latency average = 12.440 ms
+initial connection time = 36.209 ms
+tps = 803.850282 (without initial connection time)
+
+```
