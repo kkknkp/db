@@ -55,6 +55,7 @@ FROM orders
 WHERE total_amount > 500; 
 
 ```
-
-Total rows: 4 of 4
-Query complete 00:00:00.102
+"Seq Scan on orders  (cost=0.00..28.12 rows=483 width=28) (actual time=0.004..0.005 rows=0 loops=1)"
+"  Filter: (total_amount > '500'::numeric)"
+"Planning Time: 0.157 ms"
+"Execution Time: 0.012 ms"
