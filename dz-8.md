@@ -45,3 +45,14 @@ END;
 $$ LANGUAGE plpgsql;
 
 ```
+
+```sql
+проверка скорости выполнения
+
+EXPLAIN ANALYZE
+SELECT *
+FROM orders
+WHERE total_amount > 500; -- замените на ваш сложный запрос
+
+
+```
