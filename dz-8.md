@@ -38,7 +38,7 @@ CREATE OR REPLACE FUNCTION get_quarter_order_math(date_input DATE)
 RETURNS INTEGER AS $$
 BEGIN
     RETURN CASE 
-        WHEN date_input IS NULL THEN NULL -- предусмотреть NULL на входе
+        WHEN date_input IS NULL THEN NULL 
         ELSE (EXTRACT(MONTH FROM date_input) - 1) / 3 + 1
     END;
 END;
