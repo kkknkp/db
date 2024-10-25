@@ -54,5 +54,7 @@ SELECT *
 FROM orders
 WHERE total_amount > 500; 
 
-
 ```
+
+Total rows: 4 of 4
+Query complete 00:00:00.102
