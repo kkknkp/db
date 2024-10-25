@@ -52,7 +52,7 @@ $$ LANGUAGE plpgsql;
 EXPLAIN ANALYZE
 SELECT *
 FROM orders
-WHERE total_amount > 500; -- замените на ваш сложный запрос
+WHERE total_amount > 500; 
 
 
 ```
