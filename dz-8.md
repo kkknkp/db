@@ -17,7 +17,7 @@ CREATE TABLE orders (
 ```
 Функция выбора трети года
 ```aql
-sqlCREATE OR REPLACE FUNCTION get_quarter_order(date_input DATE)
+CREATE OR REPLACE FUNCTION get_quarter_order(date_input DATE)
 RETURNS INTEGER AS $$
 BEGIN
     RETURN CASE 
@@ -34,7 +34,7 @@ $$ LANGUAGE plpgsql;
 Математическая функция
 ```aql
 
-sqlCREATE OR REPLACE FUNCTION get_quarter_order_math(date_input DATE)
+CREATE OR REPLACE FUNCTION get_quarter_order_math(date_input DATE)
 RETURNS INTEGER AS $$
 BEGIN
     RETURN CASE 
