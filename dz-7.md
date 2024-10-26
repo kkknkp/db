@@ -45,3 +45,26 @@ on 48.443 ms, Total 56.111 ms
 
 
 ```
+
+```sql
+
+CREATE INDEX idx_busroute_fkbusstationfrom ON book.busroute (fkbusstationfrom);
+
+CREATE INDEX idx_busroute_fkbusstationto ON book.busroute (fkbusstationto);
+
+CREATE INDEX idx_ride_fkbus ON book.ride (fkbus);
+
+CREATE INDEX idx_ride_fkschedule ON book.ride (fkschedule);
+
+CREATE INDEX idx_schedule_fkroute ON book.schedule (fkroute);
+
+CREATE INDEX idx_seat_fkbus ON book.seat (fkbus);
+
+CREATE INDEX idx_seat_fkseatcategory ON book.seat (fkseatcategory);
+
+CREATE INDEX idx_tickets_fkride ON book.tickets (fkride);
+
+CREATE INDEX idx_tickets_fkseat ON book.tickets (fkseat);
+
+
+```
