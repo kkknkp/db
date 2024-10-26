@@ -68,3 +68,6 @@ CREATE INDEX idx_tickets_fkseat ON book.tickets (fkseat);
 
 
 ```
+```sql
+CREATE INDEX
+```
