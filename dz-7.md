@@ -45,7 +45,7 @@ on 48.443 ms, Total 56.111 ms
 
 
 ```
-
+Добавить индексы
 ```sql
 
 CREATE INDEX idx_busroute_fkbusstationfrom ON book.busroute (fkbusstationfrom);
