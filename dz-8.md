@@ -40,9 +40,11 @@ SELECT
     pg_size_pretty(pg_relation_size('jsonb_data') - pg_total_relation_size('jsonb_data')) AS toast_size;
 
 ```
+```
  total_size | table_size | toast_size
 ------------+------------+------------
  185 MB     | 112 MB     | -73 MB
+```
 
  Избавление от блаутинга
 ```sql
@@ -59,8 +61,10 @@ SELECT
     pg_size_pretty(pg_relation_size('jsonb_data')) AS table_size,
     pg_size_pretty(pg_relation_size('jsonb_data') - pg_total_relation_size('jsonb_data')) AS toast_size;
 ```
+```
  total_size | table_size | toast_size
 ------------+------------+------------
  112 MB     | 112 MB     | -56 kB
+```
 
  Блоатинг TOAST применен и система освободила место в хранилище.
