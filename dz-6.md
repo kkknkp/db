@@ -72,14 +72,15 @@ CREATE INDEX idx_tickets_fkseat ON book.tickets (fkseat);
 CREATE INDEX
 ```
 ```sql
- Planning Time: 1.566 ms
+ Planning Time: 2.846 ms
  JIT:
    Functions: 84
    Options: Inlining false, Optimization false, Expressions true, Deforming true
-   Timing: Generation 4.381 ms, Inlining 0.000 ms, Optimization 2.438 ms, Emissi
-on 49.470 ms, Total 56.289 ms
- Execution Time: 5321.798 ms
+   Timing: Generation 4.423 ms, Inlining 0.000 ms, Optimization 2.030 ms, Emissi
+on 43.079 ms, Total 49.532 ms
+ Execution Time: 2268.221 ms --------- поправила
 (59 rows)
+
 
 
 ```
